@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-Ferrari", "Ferrari\3-Ferr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-Telephony", "4-Telephony\4-Telephony.csproj", "{2C3A834A-C8CB-4E26-B705-C47F285AB413}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-BorderControl", "05-BorderControl\05-BorderControl.csproj", "{B97FB2F3-0994-4C09-B179-2617830580F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2C3A834A-C8CB-4E26-B705-C47F285AB413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3A834A-C8CB-4E26-B705-C47F285AB413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C3A834A-C8CB-4E26-B705-C47F285AB413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B97FB2F3-0994-4C09-B179-2617830580F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97FB2F3-0994-4C09-B179-2617830580F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97FB2F3-0994-4C09-B179-2617830580F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97FB2F3-0994-4C09-B179-2617830580F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
