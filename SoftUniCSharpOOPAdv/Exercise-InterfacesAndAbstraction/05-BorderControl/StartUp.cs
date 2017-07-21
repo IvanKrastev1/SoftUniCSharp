@@ -9,23 +9,30 @@ public class StartUp
     {
         var input = string.Empty;
         ICollection<IBeing> beings = new List<IBeing>();
+        ICollection<IBirthable> livinBeings = new List<IBirthable>();
         while ((input = Console.ReadLine()) != "End")
         {
             
             var token = input.Split();
-
-            if (token.Length == 3)
+            if (token[0] == "Citizen")
             {
-                beings.Add(new Citizen(token[0], int.Parse(token[1]), token[2]));
+                livinBeings.Add(new Citizen(token[1],int.Parse(token[2]),token[3],token[4]));
+            }
+            else if (token[0] == "Robot")
+            {
+                beings.Add(new Robot(token[1],token[2]));
             }
             else
             {
-                beings.Add(new Robot(token[0], token[1]));
+                livinBeings.Add(new Pet(token[1],token[2]));
             }
+            
+
+           
         }
 
-        string FakeId = Console.ReadLine();
-        beings.Where(b => b.Id.EndsWith(FakeId)).ToList().ForEach(i => Console.WriteLine(i.Id));
+        string targetYear = Console.ReadLine();
+        livinBeings.Where(b => b.Birthday.EndsWith(targetYear)).ToList().ForEach(i => Console.WriteLine(i.Birthday));
 
     }
 }

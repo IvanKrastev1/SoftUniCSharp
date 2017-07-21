@@ -43,7 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IBeing.cs" />
+    <Compile Include="Interfaces\IBirthable.cs" />
+    <Compile Include="Interfaces\INameble.cs" />
     <Compile Include="Models\Citizen.cs" />
+    <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\Robot.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

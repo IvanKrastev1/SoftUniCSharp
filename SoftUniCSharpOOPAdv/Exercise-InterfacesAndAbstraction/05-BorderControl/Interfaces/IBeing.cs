@@ -1,4 +1,7 @@
-﻿public interface IBeing
+﻿using System;
+
+public interface IBeing
 {
     string Id { get; }
+    
 }
