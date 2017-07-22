@@ -13,7 +13,7 @@ public class Circle : IDrawable
         public int Radius
         {
             get { return this.radius; }
-            set { this.radius = value; }
+            private set { this.radius = value; }
         }
     public void Draw()
         {

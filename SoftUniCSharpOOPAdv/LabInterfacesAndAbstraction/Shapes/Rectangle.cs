@@ -14,7 +14,7 @@ public class Rectangle : IDrawable
     public int Height
     {
         get { return this.height; }
-        set { this.height = value; }
+        private set { this.height = value; }
     }
 
 
@@ -22,7 +22,7 @@ public class Rectangle : IDrawable
     public int Width
     {
         get { return this.width; }
-        set { this.width = value; }
+        private set { this.width = value; }
     }
 
 
