@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 
 public class Spy
 {
-   public string RevealPrivateMethods(string investigatedClass)
+    public string RevealPrivateMethods(string investigatedClass)
     {
         var getClass = Type.GetType(investigatedClass);
         var getMethods = getClass.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
@@ -21,5 +20,4 @@ public class Spy
 
         return sb.ToString().Trim();
     }
-
 }
