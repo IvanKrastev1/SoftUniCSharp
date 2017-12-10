@@ -1,17 +1,15 @@
-﻿
-
-namespace CarPartsStore.Web.Controllers
+﻿namespace CarPartsStore.Web.Controllers
 {
-    using System;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
+    using CarPartsStore.Data.Models;
+    using CarPartsStore.Web.Models.AccountViewModels;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using CarPartsStore.Web.Models.AccountViewModels;
-    using CarPartsStore.Data.Models;
+    using System;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
     [Authorize]
     [Route("[controller]/[action]")]
@@ -214,14 +212,19 @@ namespace CarPartsStore.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User
+                {
+                    Email = model.Email,
+                    UserName = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                   
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
@@ -363,7 +366,7 @@ namespace CarPartsStore.Web.Controllers
                 // For more information on how to enable account confirmation and password reset please
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                
+
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
 
@@ -421,7 +424,6 @@ namespace CarPartsStore.Web.Controllers
             return View();
         }
 
-
         [HttpGet]
         public IActionResult AccessDenied()
         {
@@ -450,6 +452,6 @@ namespace CarPartsStore.Web.Controllers
             }
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

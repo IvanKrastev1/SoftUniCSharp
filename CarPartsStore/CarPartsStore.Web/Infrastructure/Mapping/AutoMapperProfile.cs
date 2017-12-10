@@ -1,6 +1,8 @@
 ﻿namespace CarPartsStore.Web.Infrastructure.Mapping
 {
     using AutoMapper;
+    using CarPartsStore.Common.Mapping;
+    using CarPartsStore.Services.Interfaces;
     using System;
     using System.Linq;
 
@@ -8,7 +10,7 @@
     {
         public AutoMapperProfile()
         {
-            //var loadAssembly = typeof(IService);
+            var loadAssembly = typeof(IService);
             var allTypes = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
