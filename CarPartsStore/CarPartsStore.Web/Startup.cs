@@ -39,7 +39,8 @@
                 .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IAdminUserServices, AdminUserService>();
+            //services.AddTransient<IAdminUserServices, AdminUserService>();
+            services.AddDomainServices();
             services.AddAutoMapper();
             services.AddMvc();
         }

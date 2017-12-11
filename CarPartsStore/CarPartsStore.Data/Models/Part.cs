@@ -6,11 +6,16 @@
     public class Part
     {
         public int Id { get; set; }
-
+        [Required]
+        [MinLength(DataConstants.PartNameMinLength)]
+        [MaxLength(DataConstants.PartNameMaxLength)]
+        public string Name { get; set; }
         [Required]
         [MinLength(DataConstants.PartPriceMinLength)]
         [MaxLength(DataConstants.PartPriceMaxLength)]
         public decimal Price { get; set; }
+        [Required]
+        public int Quantity { get; set; }
 
         public int CarId { get; set; }
 
