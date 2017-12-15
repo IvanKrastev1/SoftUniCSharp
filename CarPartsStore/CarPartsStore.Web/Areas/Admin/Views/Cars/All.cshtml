@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CarPartsStore.Services.Models.AdminCarListingModel>
+@{
+    ViewData["Title"] = "All";
+}
+<h2>All Cars  <td><a asp-controller="Cars" asp-action="Add" class="btn btn-success">Add new</a></td></h2>
+
+<h3 style="color:lightgreen">@TempData["SuccessDelete"]</h3>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">Year</th>
+            <th scope="col">Motor</th>
+            <th scope="col">Fuel</th>
+        </tr>
+    </thead>
+
+    @foreach (var car in Model)
+    {
+        <tbody>
+            <tr class="table-active">
+                <td>@car.Make</td>
+                <td>@car.Model</td>
+                <td>@car.Year</td>
+                <td>@car.Motor</td>
+                <td>@car.Fuel</td>
+                <td><a asp-controller="Cars" asp-action="Delete" asp-route-id="@car.Id" class="btn btn-danger">Delete</a></td>
+                <td><a asp-controller="Cars" asp-action="Edit" asp-route-id="@car.Id" class="btn btn-warning">Edit</a></td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

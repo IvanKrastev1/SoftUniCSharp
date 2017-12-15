@@ -25,5 +25,8 @@
 
         public const int PartNameMinLength = 2;
         public const int PartNameMaxLength = 100;
+
+        public const int CarYearMinLength = 4;
+        public const int CarYearMaxLength = 4;
     }
 }

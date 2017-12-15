@@ -12,8 +12,8 @@ using System;
 namespace CarPartsStore.Data.Migrations
 {
     [DbContext(typeof(CarPartsStoreDbContext))]
-    [Migration("20171204121932_InitialMigrate")]
-    partial class InitialMigrate
+    [Migration("20171215085649_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,9 @@ namespace CarPartsStore.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(15);
 
-                    b.Property<DateTime>("Year");
+                    b.Property<string>("Year")
+                        .IsRequired()
+                        .HasMaxLength(4);
 
                     b.HasKey("Id");
 
@@ -73,8 +75,14 @@ namespace CarPartsStore.Data.Migrations
 
                     b.Property<int>("CarId");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
                     b.Property<decimal>("Price")
                         .HasMaxLength(5000);
+
+                    b.Property<int>("Quantity");
 
                     b.HasKey("Id");
 

@@ -40,7 +40,9 @@ namespace CarPartsStore.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(15);
 
-                    b.Property<DateTime>("Year");
+                    b.Property<string>("Year")
+                        .IsRequired()
+                        .HasMaxLength(4);
 
                     b.HasKey("Id");
 

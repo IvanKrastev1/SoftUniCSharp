@@ -1,10 +1,11 @@
-﻿namespace CarPartsStore.Data.Migrations
-{
-    using Microsoft.EntityFrameworkCore.Metadata;
-    using Microsoft.EntityFrameworkCore.Migrations;
-    using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+using System.Collections.Generic;
 
-    public partial class DbToTable : Migration
+namespace CarPartsStore.Data.Migrations
+{
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,7 +60,7 @@
                     Make = table.Column<string>(maxLength: 20, nullable: false),
                     Model = table.Column<string>(maxLength: 20, nullable: false),
                     Motor = table.Column<string>(maxLength: 15, nullable: false),
-                    Year = table.Column<DateTime>(nullable: false)
+                    Year = table.Column<string>(maxLength: 4, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -220,7 +221,9 @@
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CarId = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(maxLength: 5000, nullable: false)
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Price = table.Column<decimal>(maxLength: 5000, nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
