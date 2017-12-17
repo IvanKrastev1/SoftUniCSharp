@@ -1,0 +1,39 @@
+﻿ @model IEnumerable<AdminAllPartsListingModel>
+    @{
+        ViewData["Title"] = "All";
+    }
+
+    <h2>All Parts  <td><a asp-controller="Parts" asp-action="Add" class="btn btn-success">Add new</a></td></h2>
+
+    <h3 style="color:lightgreen">@TempData["SuccessDelete"]</h3>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">In Stock</th>
+                <th scope="col">Car</th>
+            </tr>
+        </thead>
+
+        @foreach (var part in Model)
+        {
+            <tbody>
+                <tr class="table-active">
+                    <td>@part.Name</td>
+                    <td>@part.Price</td>
+                    <td>@part.Quantity</td>
+                    <td>@part.Car.Make @part.Car.Model @part.Car.Year @part.Car.Fuel @part.Car.Motor </td>
+                   
+
+                    <td><a asp-controller="Parts" asp-action="Delete" asp-route-id="@part.Id" class="btn btn-danger">Delete</a></td>
+                    <td><a asp-controller="Parts" asp-action="Edit" asp-route-id="@part.Id" asp-route-name="@part.Name" asp-route-price="@part.Price" asp-route-quantity="@part.Quantity" asp-route-carId="@part.CarId" class="btn btn-warning">Edit</a></td>
+                </tr>
+            </tbody>
+                        }
+    </table>
+
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }

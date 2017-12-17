@@ -36,5 +36,7 @@ namespace CarPartsStore.Services.Models
         public FuelType Fuel { get; set; }
 
         public IList<Part> Parts { get; set; } = new List<Part>();
+
+        
     }
 }
