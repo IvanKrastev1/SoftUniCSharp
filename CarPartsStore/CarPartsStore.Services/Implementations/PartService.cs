@@ -156,9 +156,8 @@ namespace CarPartsStore.Services.Implementations
                 PartId = part.Id
             });
 
-            
-            part.Quantity -= quantity;
             await this.db.SaveChangesAsync();
+            part.Quantity -= quantity;
             return true;
         }
     }

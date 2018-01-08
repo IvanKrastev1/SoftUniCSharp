@@ -21,15 +21,22 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<PartSale>().HasKey(x => new { x.UserId, x.PartId });
+
             builder.Entity<User>()
                 .HasMany(x => x.Orders)
                 .WithOne(a => a.User)
                 .HasForeignKey(x => x.UserId);
 
-            builder.Entity<Part>()
+            builder. Entity<Part>()
                 .HasMany(x => x.Orders)
                 .WithOne(a => a.Part)
                 .HasForeignKey(x => x.PartId);
+
+            builder.Entity<User>
+                ().HasMany(p => p.Parts)
+                .WithOne(s => s.User)
+                .HasForeignKey(fk => fk.UserId);
 
             builder
                 .Entity<Message>()

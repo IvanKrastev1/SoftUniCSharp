@@ -33,12 +33,15 @@
 
         public async Task Delete(int id)
         {
-            var car = await this
+            if (await IsValidCar(id))
+            {
+                var car = await this
                 .db
                 .Cars
                 .SingleOrDefaultAsync(u => u.Id == id);
-            this.db.Remove(car);
-            await db.SaveChangesAsync();
+                this.db.Remove(car);
+                await db.SaveChangesAsync();
+            }                
         }
 
         public async Task<AdminCarEditModel> CarById(int id)

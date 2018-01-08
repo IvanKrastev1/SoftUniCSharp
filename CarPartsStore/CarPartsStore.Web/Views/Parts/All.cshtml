@@ -19,18 +19,10 @@ else
 
                 Name:@part.Name <br />
                 Price: @part.Price<br />
-                @if (part.Quantity <= 0)
-                {
-                    <p class="text-danger">Out of stock</p>
-                }
-                else
-                {
-                    <p>In Stock: @part.Quantity<br /></p>                 
-                    <a class="btn btn-info" asp-controller="Parts" asp-action="ConfirmOrder" asp-route-partId="@part.Id">
-                        Order
-                    </a>
-                }
-
+                In Stock: @part.Quantity<br />
+                <a class="btn btn-info" asp-controller="Parts" asp-action="ConfirmOrder" asp-route-partId="@part.Id">
+                    Order
+                </a>
             </div>
         </div>
     }

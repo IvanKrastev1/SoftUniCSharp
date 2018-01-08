@@ -79,7 +79,7 @@ namespace CarPartsStore.Data.Migrations
 
                     b.Property<int>("Quantity");
 
-                    b.Property<decimal>("TotalPrice");
+                    b.Property<double>("TotalPrice");
 
                     b.Property<string>("UserId");
 

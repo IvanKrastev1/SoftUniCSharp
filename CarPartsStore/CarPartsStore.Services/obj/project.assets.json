@@ -5412,11 +5412,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Services\\CarPartsStore.Services.csproj",
+      "projectUniqueName": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Services\\CarPartsStore.Services.csproj",
       "projectName": "CarPartsStore.Services",
-      "projectPath": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Services\\CarPartsStore.Services.csproj",
+      "projectPath": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Services\\CarPartsStore.Services.csproj",
       "packagesPath": "C:\\Users\\gstoy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Services\\obj\\",
+      "outputPath": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5435,8 +5435,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Data\\CarPartsStore.Data.csproj": {
-              "projectPath": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Data\\CarPartsStore.Data.csproj"
+            "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Data\\CarPartsStore.Data.csproj": {
+              "projectPath": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Data\\CarPartsStore.Data.csproj"
             }
           }
         }

@@ -74,13 +74,11 @@ namespace CarPartsStore.Data.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<bool>("IsDelivered");
-
                     b.Property<int>("PartId");
 
                     b.Property<int>("Quantity");
 
-                    b.Property<decimal>("TotalPrice");
+                    b.Property<double>("TotalPrice");
 
                     b.Property<string>("UserId");
 
@@ -117,6 +115,19 @@ namespace CarPartsStore.Data.Migrations
                     b.HasIndex("CarId");
 
                     b.ToTable("Parts");
+                });
+
+            modelBuilder.Entity("CarPartsStore.Data.Models.PartSale", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("PartId");
+
+                    b.HasKey("UserId", "PartId");
+
+                    b.HasIndex("PartId");
+
+                    b.ToTable("PartSale");
                 });
 
             modelBuilder.Entity("CarPartsStore.Data.Models.User", b =>
@@ -310,6 +321,19 @@ namespace CarPartsStore.Data.Migrations
                     b.HasOne("CarPartsStore.Data.Models.Car", "Car")
                         .WithMany("Parts")
                         .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CarPartsStore.Data.Models.PartSale", b =>
+                {
+                    b.HasOne("CarPartsStore.Data.Models.Part", "Part")
+                        .WithMany()
+                        .HasForeignKey("PartId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CarPartsStore.Data.Models.User", "User")
+                        .WithMany("Parts")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

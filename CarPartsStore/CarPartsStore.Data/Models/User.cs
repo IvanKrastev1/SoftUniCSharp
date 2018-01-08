@@ -15,6 +15,8 @@
         [MaxLength(DataConstants.UserNameMaxLength)]
         public string LastName { get; set; }
 
+        public List<PartSale> Parts { get; set; }
+
         public List<Order> Orders { get; set; }
 
         public IList<Message> Messages { get; set; } = new List<Message>();

@@ -3718,11 +3718,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Common\\CarPartsStore.Common.csproj",
+      "projectUniqueName": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Common\\CarPartsStore.Common.csproj",
       "projectName": "CarPartsStore.Common",
-      "projectPath": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Common\\CarPartsStore.Common.csproj",
+      "projectPath": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Common\\CarPartsStore.Common.csproj",
       "packagesPath": "C:\\Users\\gstoy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gstoy\\Desktop\\cars\\CarPartsStore.Common\\obj\\",
+      "outputPath": "C:\\Users\\gstoy\\Desktop\\carparts\\CarPartsStore.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
