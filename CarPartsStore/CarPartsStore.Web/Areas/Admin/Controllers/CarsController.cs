@@ -2,42 +2,43 @@
 using CarPartsStore.Services.Models;
 using CarPartsStore.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CarPartsStore.Web.Areas.Admin.Controllers
 {
     public class CarsController : BaseAdminController
     {
-        private readonly IAdminCarService service;
+        private readonly ICarService service;
 
-        public CarsController(IAdminCarService service)
+        public CarsController(ICarService service)
         {
             this.service = service;
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            var result = service.All();
+            var result = await this.service.All();
             return View(result);
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            this.service.Delete(id);
-            this.TempData["SuccessDelete"] = "Deleted successfully!";
+            await this.service.Delete(id);
+            this.TempData[WebConstants.TempDataSuccessDelete] = WebConstants.DeletedSuccessfullyMessage;
             return this.RedirectToAction(nameof(All));
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var result = this.service.CarById(id);
+            var result = await this.service.CarById(id);
 
             return View(result);
         }
 
         [HttpPost]
-        public IActionResult Edit(AdminCarEditModel car)
+        public async Task<IActionResult> Edit(AdminCarEditModel car)
         {
-            this.service.EditCar(car.Id, car.Make, car.Model, car.Year, car.Fuel, car.Motor);
+            await this.service.EditCar(car.Id, car.Make, car.Model, car.Year, car.Fuel, car.Motor);
             return this.RedirectToAction(nameof(All));
         }
 
@@ -47,9 +48,9 @@ namespace CarPartsStore.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(AdminAddCarFormModel car)
+        public async Task<IActionResult> Add(AdminAddCarFormModel car)
         {
-            this.service.AddCar(car.Make, car.Model, car.Year, car.Fuel, car.Motor);
+            await this.service.AddCar(car.Make, car.Model, car.Year, car.Fuel, car.Motor);
             return this.RedirectToAction(nameof(All));
         }
     }

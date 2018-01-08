@@ -1,0 +1,30 @@
+﻿@model PartOrderViewModel
+@{
+    ViewData["Title"] = "Confirm Order";
+}
+<h2>Confirm your order</h2>
+<div>
+    <img border="0" id="imageProfile" src="@Model.ImageUrl" class="imagePart" /><br />
+    <h3><b>Name: </b>@Model.Name</h3>
+    <h3><b>Price for one: </b>@Model.Price</h3>
+    <h3><b>Suitable for: </b>@Model.Car</h3>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Quantity"></label>
+            <input asp-for="Quantity" class="form-control" asp-value="@Model.Quantity" style="width:70px;" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" style="width:200px;" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <br />
+        <button class="btn btn-success" type="submit">
+            Confirm Order
+        </button>
+    </form>
+    <a class="btn btn-default" asp-controller="Parts" asp-action="All">
+        Back
+    </a>
+</div>

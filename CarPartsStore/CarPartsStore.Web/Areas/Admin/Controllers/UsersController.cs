@@ -9,44 +9,44 @@
 
     public class UsersController : BaseAdminController
     {
-        private readonly IAdminUserServices service;
+        private readonly IUserServices service;
 
         private readonly RoleManager<IdentityRole> roleManager;
 
         private readonly UserManager<User> userManager;
 
-        public UsersController(IAdminUserServices service, RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
+        public UsersController(IUserServices service, RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
         {
             this.service = service;
             this.userManager = userManager;
             this.roleManager = roleManager;
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            var result = this.service.All(this.User.Identity.Name);
+            var result = await this.service.All(this.User.Identity.Name);
 
             return this.View(result);
         }
 
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            this.service.Delete(id);
-            this.TempData["SuccessDelete"] = "Deleted successfully!";
+            await this.service.Delete(id);
+            this.TempData[WebConstants.TempDataSuccessDelete] = WebConstants.DeletedSuccessfullyMessage;
             return this.RedirectToAction(nameof(All));
         }
 
-        public IActionResult Edit(string id)
+        public async Task<IActionResult> Edit(string id)
         {
-            var result = this.service.UserById(id);
+            var result = await this.service.UserById(id);
 
             return View(result);
         }
 
         [HttpPost]
-        public IActionResult Edit(AdminUserEditModel user)
+        public async  Task<IActionResult> Edit(AdminUserEditModel user)
         {
-            this.service.EditUser(user.Id, user.Email, user.FirstName, user.LastName);
+            await this.service.EditUser(user.Id, user.Email, user.FirstName, user.LastName);
             return this.RedirectToAction(nameof(All));
         }
 
@@ -58,7 +58,7 @@
             var userExists = user != null;
             if (!roleExists || !userExists)
             {
-                ModelState.AddModelError(string.Empty, "Invalid identity details.");
+                ModelState.AddModelError(string.Empty, WebConstants.InvalidDetails);
             }
 
             if (!ModelState.IsValid)

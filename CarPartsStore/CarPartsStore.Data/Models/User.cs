@@ -5,7 +5,8 @@
     using System.ComponentModel.DataAnnotations;
 
     public class User : IdentityUser
-    {   [Required]
+    {
+        [Required]
         [MinLength(DataConstants.UserNameMinLength)]
         [MaxLength(DataConstants.UserNameMaxLength)]
         public string FirstName { get; set; }
@@ -14,7 +15,7 @@
         [MaxLength(DataConstants.UserNameMaxLength)]
         public string LastName { get; set; }
 
-        public IList<Sale> Sales { get; set; } = new List<Sale>();
+        public List<Order> Orders { get; set; }
 
         public IList<Message> Messages { get; set; } = new List<Message>();
     }

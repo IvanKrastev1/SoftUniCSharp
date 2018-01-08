@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AllOrdersListingModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+@if(Model.Count() == 0){
+    <h2>No orders</h2>
+}
+
+else
+{<h2>My orders</h2>
+
+
+    <table class="table table-hover">
+            <thead>
+                <tr>                   
+                    <th scope="col">Part</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Adress</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+        @foreach (var order in Model)
+        {
+                <tbody>
+                    <tr class="table-active">                        
+                        <td>@order.Part.Name</td>
+                        <td>@order.Quantity</td>
+                        <td>@order.Address</td>
+                        <td>@order.TotalPrice</td>
+                        <td>@(order.IsDelivered ? "Sent" : "Not Approved Yet")</td>
+                       </tr>
+                </tbody>
+            }
+        </table>
+    }

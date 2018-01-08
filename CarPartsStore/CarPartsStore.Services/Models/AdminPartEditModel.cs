@@ -1,4 +1,5 @@
-﻿using CarPartsStore.Common.Mapping;
+﻿using CarPartsStore.Common;
+using CarPartsStore.Common.Mapping;
 using CarPartsStore.Data;
 using CarPartsStore.Data.Models;
 using System.Collections.Generic;
@@ -24,8 +25,14 @@ namespace CarPartsStore.Services.Models
         public int Quantity { get; set; }
 
         [Required]
-        [Display(Name ="Car")]
+        [Display(Name = PartsConst.DisplayCar)]
         public int CarId { get; set; }
+
+        [Required]
+        [MinLength(DataConstants.PartNameMinLength)]
+
+        [Display(Name = PartsConst.DisplayImageUrl)]
+        public string ImageUrl { get; set; }
 
         public IEnumerable<AdminCarListingModel> Cars { get; set; }
     }

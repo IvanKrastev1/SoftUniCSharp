@@ -1,0 +1,13 @@
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Services.deps.json
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Services.dll
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Services.pdb
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Common.dll
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Data.dll
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Data.pdb
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\bin\Debug\netstandard2.0\CarPartsStore.Common.pdb
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\obj\Debug\netstandard2.0\CarPartsStore.Services.csprojResolveAssemblyReference.cache
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\obj\Debug\netstandard2.0\CarPartsStore.Services.csproj.CoreCompileInputs.cache
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\obj\Debug\netstandard2.0\CarPartsStore.Services.AssemblyInfoInputs.cache
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\obj\Debug\netstandard2.0\CarPartsStore.Services.AssemblyInfo.cs
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\obj\Debug\netstandard2.0\CarPartsStore.Services.dll
+C:\Users\gstoy\Desktop\cars\CarPartsStore.Services\obj\Debug\netstandard2.0\CarPartsStore.Services.pdb

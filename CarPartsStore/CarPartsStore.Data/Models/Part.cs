@@ -21,6 +21,11 @@
 
         public Car Car { get; set; }
 
-        public List<PartSale> Sales { get; set; } = new List<PartSale>();
+        [Required]
+        [MinLength(DataConstants.PartNameMinLength)]
+        public string ImageUrl { get; set; }
+
+        public List<Order> Orders { get; set; }
+
     }
 }

@@ -28,5 +28,8 @@
 
         public const int CarYearMinLength = 4;
         public const int CarYearMaxLength = 4;
+
+        public const int MinQuanityOrder = 1;
+        public const int AddressMinLenght = 2;
     }
 }

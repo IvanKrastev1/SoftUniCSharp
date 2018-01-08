@@ -14,8 +14,4 @@
     <ProjectReference Include="..\CarPartsStore.Common\CarPartsStore.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

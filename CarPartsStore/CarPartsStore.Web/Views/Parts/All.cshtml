@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AllPartsListingModel>
+@{
+    ViewData["Title"] = "All";
+}
+@TempData[WebConstants.TempDataSorry]
+@if (Model.Count() == 0)
+{
+    <h2 class="text-danger">No parts available for now</h2>
+}
+else
+{
+    @foreach (var part in Model)
+    {
+        <div class="col-md-4" id="menu">
+            <div style="text-align:center;">
+
+                <img border="0" id="imagePart" src="@part.ImageUrl" class="imagePart" />
+                <br />
+
+                Name:@part.Name <br />
+                Price: @part.Price<br />
+                @if (part.Quantity <= 0)
+                {
+                    <p class="text-danger">Out of stock</p>
+                }
+                else
+                {
+                    <p>In Stock: @part.Quantity<br /></p>                 
+                    <a class="btn btn-info" asp-controller="Parts" asp-action="ConfirmOrder" asp-route-partId="@part.Id">
+                        Order
+                    </a>
+                }
+
+            </div>
+        </div>
+    }
+}

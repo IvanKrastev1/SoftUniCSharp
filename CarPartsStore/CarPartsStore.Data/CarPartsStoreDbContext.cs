@@ -15,33 +15,21 @@
 
         public DbSet<Car> Cars { get; set; }
 
-        public DbSet<Sale> Sales { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder
-                .Entity<PartSale>()
-                .HasKey(pa => new { pa.PartId, pa.SaleId });
+            builder.Entity<User>()
+                .HasMany(x => x.Orders)
+                .WithOne(a => a.User)
+                .HasForeignKey(x => x.UserId);
 
-            builder
-                .Entity<PartSale>()
-                .HasOne(p => p.Part)
-                .WithMany(s => s.Sales)
-                .HasForeignKey(fk => fk.PartId);
-
-            builder
-                .Entity<PartSale>()
-                .HasOne(s => s.Sale)
-                .WithMany(p => p.Parts)
-                .HasForeignKey(fk => fk.SaleId);
-
-            builder
-                .Entity<Sale>()
-                .HasOne(u => u.User)
-                .WithMany(s => s.Sales)
-                .HasForeignKey(u => u.UserId);
+            builder.Entity<Part>()
+                .HasMany(x => x.Orders)
+                .WithOne(a => a.Part)
+                .HasForeignKey(x => x.PartId);
 
             builder
                 .Entity<Message>()

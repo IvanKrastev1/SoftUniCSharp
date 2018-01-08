@@ -1,0 +1,24 @@
+﻿@model IEnumerable<AdminAllMessageListingModel>
+@{
+    ViewData["Title"] = "All";
+}
+<h2>All Messages</h2>
+<h3 style="color:lightgreen">@TempData["SuccessDelete"]</h3>
+
+@foreach (var message in Model)
+{
+    <h2>@message.User.FirstName @message.User.LastName</h2>
+
+    <p>@message.Description</p>
+    <td><a asp-controller="Messages" asp-action="Delete" asp-route-id="@message.Id" class="btn btn-danger">Delete</a></td>
+}
+
+<h2></h2>
+<p></p>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+

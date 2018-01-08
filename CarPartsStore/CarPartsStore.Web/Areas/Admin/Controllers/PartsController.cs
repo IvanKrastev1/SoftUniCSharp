@@ -3,30 +3,31 @@ using CarPartsStore.Services.Interfaces;
 using CarPartsStore.Services.Models;
 using CarPartsStore.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CarPartsStore.Web.Areas.Admin.Controllers
 {
     public class PartsController : BaseAdminController
     {
-        private readonly IAdminPartService service;
-        private readonly IAdminCarService carService;
+        private readonly IPartService service;
+        private readonly ICarService carService;
 
-        public PartsController(IAdminPartService service, IAdminCarService carService)
+        public PartsController(IPartService service, ICarService carService)
         {
             this.service = service;
             this.carService = carService;
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            var result = service.All();
+            var result = await this.service.All();
 
-            return View(result);
+            return  View(result);
         }
 
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            var allcars = this.carService.All();
+            var allcars = await this.carService.All();
             AdminAddPartFormModel model = new AdminAddPartFormModel
             {
                 Cars = allcars
@@ -36,37 +37,39 @@ namespace CarPartsStore.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(AdminAddPartFormModel part)
+        public async Task<IActionResult> Add(AdminAddPartFormModel part)
         {
-            this.service.AddPart(part.Name, part.Price, part.Quantity, part.CarId);
+            await this.service.AddPart(part.Name, part.Price, part.Quantity, part.CarId,part.ImageUrl);
             return this.RedirectToAction(nameof(All));
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            this.service.Delete(id);
-            this.TempData["SuccessDelete"] = "Deleted successfully!";
+            await this.service.Delete(id);
+            this.TempData[WebConstants.TempDataSuccessDelete] = WebConstants.DeletedSuccessfullyMessage;
             return this.RedirectToAction(nameof(All));
         }
 
-        public IActionResult Edit(int id, string name, decimal price, int quantity)
+        public async Task<IActionResult> Edit(int id, string name, decimal price, int quantity,string imageUrl)
         {
-            var result = this.service.PartById(id);
-            var allcars = this.carService.All();
+            var result =  await this.service.PartById(id);
+            var allcars =await  this.carService.All();
+
             AdminPartEditModel model = new AdminPartEditModel
             {
-                Name = name,
-                Price = price,
-                Quantity = quantity,
-                Cars = allcars
+                Name = result.Name,
+                Price = result.Price,
+                Quantity = result.Quantity,
+                Cars = allcars,
+                ImageUrl = result.ImageUrl
             };
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(AdminAddPartFormModel part)
+        public async Task<IActionResult> Edit(AdminAddPartFormModel part)
         {
-            this.service.EditPart(part.Id, part.Name, part.Price, part.Quantity, part.CarId);
+            await this.service.EditPart(part.Id, part.Name, part.Price, part.Quantity, part.CarId,part.ImageUrl);
             return this.RedirectToAction(nameof(All));
         }
     }

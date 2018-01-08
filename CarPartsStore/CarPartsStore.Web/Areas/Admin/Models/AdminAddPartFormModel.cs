@@ -24,8 +24,12 @@ namespace CarPartsStore.Web.Areas.Admin.Models
         public int Quantity { get; set; }
 
         [Required]
-        [Display(Name = "Car")]
+        [Display(Name = WebConstants.CarDisplayName)]
         public int CarId { get; set; }
+
+        [Required]
+        [MinLength(DataConstants.PartNameMinLength)]
+        public string ImageUrl { get; set; }
 
         public IEnumerable<AdminCarListingModel> Cars { get; set; }
     }

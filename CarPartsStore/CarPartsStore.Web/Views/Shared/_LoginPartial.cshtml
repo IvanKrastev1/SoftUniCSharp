@@ -12,6 +12,9 @@
             @if (this.User.IsInRole(WebConstants.AdministratorRole))
             {
                 <li>
+                    <a asp-area="Admin" asp-controller="Orders" asp-action="All" title="Manage">Orders</a>
+                </li>
+                <li>
                     <a asp-area="Admin" asp-controller="Users" asp-action="All" title="Manage">Users</a>
                 </li>
                 <li>
@@ -20,7 +23,25 @@
                 <li>
                     <a asp-area="Admin" asp-controller="Parts" asp-action="All" title="Manage">Parts</a>
                 </li>
-
+                <li>
+                    <a asp-area="Admin" asp-controller="Messages" asp-action="All" title="Manage">Messages</a>
+                </li>
+            }
+            @if (!this.User.IsInRole(WebConstants.AdministratorRole) || this.User.IsInRole(WebConstants.SupplierRole))
+            {
+                <li>
+                    <a asp-area="" asp-controller="Messages" asp-action="Add">Message us</a>                    
+                  
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Orders" asp-action="Index">My Orders</a>
+                </li>                    
+            }
+            @if (this.User.IsInRole(WebConstants.SupplierRole))
+            {
+                <li>
+                    <a asp-area="Supplier" asp-controller="Parts" asp-action="All" title="Manage">Parts to supply</a>
+                </li>
             }
             <li>
                 <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>

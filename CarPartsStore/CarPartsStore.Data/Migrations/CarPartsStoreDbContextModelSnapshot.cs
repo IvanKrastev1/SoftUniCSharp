@@ -67,12 +67,41 @@ namespace CarPartsStore.Data.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("CarPartsStore.Data.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<bool>("IsDelivered");
+
+                    b.Property<int>("PartId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<decimal>("TotalPrice");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PartId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("CarPartsStore.Data.Models.Part", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CarId");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -88,39 +117,6 @@ namespace CarPartsStore.Data.Migrations
                     b.HasIndex("CarId");
 
                     b.ToTable("Parts");
-                });
-
-            modelBuilder.Entity("CarPartsStore.Data.Models.PartSale", b =>
-                {
-                    b.Property<int>("PartId");
-
-                    b.Property<int>("SaleId");
-
-                    b.HasKey("PartId", "SaleId");
-
-                    b.HasIndex("SaleId");
-
-                    b.ToTable("PartSale");
-                });
-
-            modelBuilder.Entity("CarPartsStore.Data.Models.Sale", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Adress")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<bool>("IsDelivered");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("CarPartsStore.Data.Models.User", b =>
@@ -297,32 +293,24 @@ namespace CarPartsStore.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("CarPartsStore.Data.Models.Order", b =>
+                {
+                    b.HasOne("CarPartsStore.Data.Models.Part", "Part")
+                        .WithMany("Orders")
+                        .HasForeignKey("PartId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CarPartsStore.Data.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("CarPartsStore.Data.Models.Part", b =>
                 {
                     b.HasOne("CarPartsStore.Data.Models.Car", "Car")
                         .WithMany("Parts")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CarPartsStore.Data.Models.PartSale", b =>
-                {
-                    b.HasOne("CarPartsStore.Data.Models.Part", "Part")
-                        .WithMany("Sales")
-                        .HasForeignKey("PartId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CarPartsStore.Data.Models.Sale", "Sale")
-                        .WithMany("Parts")
-                        .HasForeignKey("SaleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CarPartsStore.Data.Models.Sale", b =>
-                {
-                    b.HasOne("CarPartsStore.Data.Models.User", "User")
-                        .WithMany("Sales")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

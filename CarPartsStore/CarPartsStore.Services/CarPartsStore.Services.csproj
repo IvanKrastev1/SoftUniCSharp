@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\IsDeliveredModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CarPartsStore.Data\CarPartsStore.Data.csproj" />
   </ItemGroup>
 
